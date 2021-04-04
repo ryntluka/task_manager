@@ -15,3 +15,5 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+import 'bootstrap-icons/font/bootstrap-icons.css'

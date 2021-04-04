@@ -1,6 +1,5 @@
 [class="btn"] {
   @extend .btn-primary;
-  margin-left: 1rem;
 }
 
 abbr[title] {
@@ -26,5 +25,9 @@ a {
 }
 
 h2 {
+  margin: 1rem;
+}
+
+.form-inputs {
   margin: 1rem;
 }

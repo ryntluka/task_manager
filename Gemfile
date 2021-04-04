@@ -22,6 +22,9 @@ gem 'simple_form'
 gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'jquery'
 gem 'jquery-rails'
+gem 'slim'
+gem 'bootstrap-icons-helper'
+gem 'simplecov', require: false, group: :test
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -37,6 +40,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'shoulda-matchers'
 end
 
 group :development do
