@@ -1,0 +1,9 @@
+h2 New Project
+.m-2
+  = simple_form_for @project, :url => '/projects' do |f|
+    .mb-2
+      = f.input :title, required: true
+    .mb-2
+      = f.association :user, label_method: lambda { |user| "#{user.first_name} #{user.last_name}" }
+    .form-actions class="mb-2"
+      = f.button :submit, "Save"

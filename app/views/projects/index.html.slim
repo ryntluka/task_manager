@@ -1,0 +1,14 @@
+h1.m-4 Projects
+.row class="m-2"
+  - @projects.sort_by(&:position).each do |project|
+    .card class="w-25 p-0 m-2"
+      .card-header
+        h3.card-title class="text-center py-1 m-0" = project.title
+      .card-body
+        .card-header Tasks
+        ul.list-group class="list-group-flush"
+          - project.tasks.each do |task|
+            li.list-group-item class=(task.is_done ? "bg-success" : "bg-warning")
+              = link_to task.title, task_path(task), class: "text-dark"
+
+= link_to "Create new project", new_project_path, class: 'btn'

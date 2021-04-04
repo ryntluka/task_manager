@@ -1,0 +1,13 @@
+.card class="w-75 m-auto"
+  .card-header
+    .h2 class="card-title text-center" = @task.title
+  .d-flex class="flex-row"
+    .card-body
+      p.text-justify = @task.description
+    .card-body
+      p
+        'Project:
+        - if @task.project
+          = link_to @task.project.title, project_path(@task.project)
+        - else
+          'Unassigned
