@@ -17,16 +17,16 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.is_done = false
     if @task.save
-      redirect_to tasks_url, notice: t('the_task_was_saved_successfully')
+      redirect_to tasks_url, flash: {success: t('the_task_was_saved_successfully')}
     else
-      @error = @task.errors
+      render :new
     end
   end
 
   def destroy
     @task = current_user.tasks.find_by(id: params[:id])
     @task.destroy
-    redirect_to tasks_url, notice: t(:the_task_has_been_removed)
+    redirect_to tasks_url, flash: {warning: t(:the_task_has_been_removed)}
   end
 
   def do

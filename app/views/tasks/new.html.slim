@@ -3,8 +3,6 @@
 h2= t(:new_task)
 .m-2
   = simple_form_for @task, :url => '/tasks' do |f|
-    = f.error_notification
-    = f.full_error :confirmation_token
     .mb-2
       = f.input :title, required: true
     .mb-2

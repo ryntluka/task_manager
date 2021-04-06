@@ -16,16 +16,17 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(projects_params)
     @project.position = 1
-    if @project.save
-      redirect_to projects_url
+    if @project.valid?
+      @project.save
+      redirect_to projects_url, flash: {success: "Project saved successfully"}
     else
-      redirect_to new_projects_path, notice: t('please_review_the_problems_below')
+      render :new
     end
   end
 
   def destroy
-    @projects = current_user.projects.find_by(id: params[:id])
-    if @projects.destroy
+    @project = current_user.projects.find_by(id: params[:id])
+    if @project.destroy
       redirect_to projects_url
     end
   end
