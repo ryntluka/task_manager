@@ -9,9 +9,9 @@ class TasksController < ApplicationController
     @pagy, @tasks = pagy(current_user.tasks, items: 12)
   end
 
-    def show
-      @task = current_user.tasks.find_by(id: params[:id])
-    end
+  def show
+    @task = current_user.tasks.find_by(id: params[:id])
+  end
 
   def create
     @task = Task.new(task_params)
@@ -25,9 +25,8 @@ class TasksController < ApplicationController
 
   def destroy
     @task = current_user.tasks.find_by(id: params[:id])
-    if @task.destroy
-      redirect_to tasks_url
-    end
+    @task.destroy
+    redirect_to tasks_url, notice: 'The task has been removed'
   end
 
   def do

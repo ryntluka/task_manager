@@ -13,8 +13,13 @@
   <body>
     <header>
       <%= render 'shared/navbar' %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <div class="container mt-2">
+        <% flash.each do |type, msg| %>
+          <div class="alert alert-danger">
+            <%= msg %>
+          </div>
+        <% end %>
+      </div>
     </header>
     <div class="container">
       <%= yield %>
