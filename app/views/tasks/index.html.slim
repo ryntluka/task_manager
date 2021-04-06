@@ -11,9 +11,17 @@ h1 Tasks
         hr
         .button-row
           - unless task.is_done
-            = button_to 'Mark finished', do_task_path(task), class: 'btn btn-outline-warning', method: :put
+            = button_to do_task_path(task), class: 'btn btn-outline-warning', method: :put do
+              i.bi.bi-arrow-counterclockwise
           - else
-            = button_to 'Mask unfinished', undo_task_path(task), class: 'btn btn-outline-success', method: :delete
-          = button_to 'Delete', task_path(task), class: 'btn btn-danger', method: :delete
+            = button_to undo_task_path(task), class: 'btn btn-outline-success', method: :delete do
+              i.bi.bi-check2
+          = button_to task_path(task), method: :delete, class: 'btn btn-danger' do
+            i.bi.bi-trash
 == pagy_bootstrap_nav(@pagy)
-= link_to "Create new task", new_task_path, class: 'btn'
+= link_to new_task_path, class: 'btn' do
+  | Create new
+  '
+  i.bi.bi-plus
+
+
