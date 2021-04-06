@@ -63,3 +63,12 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  tasks: ""
+  sign_in: ""
+  title: ""
+  user: ""
+  create_new_project: ""
+  save: ""
+  new_task: ""
+  unassigned: ""
+  new_project: ""

@@ -1,4 +1,4 @@
-h2 New Project
+h2= t(:new_project)
 .m-2
   = simple_form_for @project, :url => '/projects' do |f|
     .mb-2
@@ -6,4 +6,4 @@ h2 New Project
     .mb-2
       = f.association :user, label_method: lambda { |user| "#{user.first_name} #{user.last_name}" }
     .form-actions class="mb-2"
-      = f.button :submit, "Save"
+      = f.button :submit, t(:save)

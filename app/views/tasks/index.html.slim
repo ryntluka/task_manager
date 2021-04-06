@@ -1,9 +1,9 @@
-h1 Tasks
+h1= t(:tasks)
 .row
-  - @tasks.sort_by(&:id).each do |task|
-    .card class="w-25 m-2 p-0" class=(task.is_done ? 'border-success' : 'border-warning')
+  - @tasks.each do |task|
+    .card.w-25.m-2.p-0 class=(task.is_done ? 'border-success' : 'border-warning')
       .card-header class=(task.is_done ? 'bg-success' : 'bg-warning')
-        h3.card-title class="text-center py-1 m-0"
+        h3.card-title.text-center.py-1.m-0
           = link_to task.title, task_path(task), class: "text-dark"
       .card-body
         p.card-text = task.description
@@ -12,10 +12,10 @@ h1 Tasks
         .button-row
           - unless task.is_done
             = button_to do_task_path(task), class: 'btn btn-outline-warning', method: :put do
-              i.bi.bi-arrow-counterclockwise
+              i.bi.bi-check2
           - else
             = button_to undo_task_path(task), class: 'btn btn-outline-success', method: :delete do
-              i.bi.bi-check2
+              i.bi.bi-arrow-counterclockwise
           = button_to task_path(task), method: :delete, class: 'btn btn-danger',
                   data: {confirm: "Are you sure you want to delete this item"} do
             i.bi.bi-trash

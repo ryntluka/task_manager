@@ -1,14 +1,17 @@
-h1 Projects
+h1= t(:projects)
 .row
   - @projects.sort_by(&:position).each do |project|
     .card class="w-25 p-0 m-2"
       .card-header
         h3.card-title class="text-center py-1 m-0" = project.title
       .card-body
-        .card-header Tasks
-        ul.list-group class="list-group-flush"
+        .card-header = t(:projects)
+        ul.list-group.list-group-flush
           - project.tasks.each do |task|
             li.list-group-item class=(task.is_done ? "bg-success" : "bg-warning")
               = link_to task.title, task_path(task), class: "text-dark"
 == pagy_bootstrap_nav(@pagy)
-= link_to "Create new project", new_project_path, class: 'btn'
+= link_to new_project_path, class: 'btn' do
+  = t(:create_new)
+  '
+  i.bi.bi-plus

@@ -1,0 +1,27 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  .container-fluid
+    a.navbar-brand href="/" = t(:title)
+    button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+      span.navbar-toggler-icon
+    #navbarNavDropdown.collapse.navbar-collapse
+      ul.navbar-nav.ml-auto
+        - if user_signed_in?
+          li
+            = link_to t(:tasks), tasks_path, class: 'nav-link'
+          li
+            = link_to t(:projects), projects_path, class: 'nav-link'
+          li.nav-item.dropdown
+            a#navbarDropdownMenuLink.nav-link.dropdown-toggle href="#" role="button" data-toggle="dropdown" aria-expanded="false"
+              = t(:user)
+            ul.dropdown-menu.dropdown-menu-dark aria-labelledby="navbarDropdownMenuLink"
+              li
+                = link_to t(:edit_profile), edit_user_registration_path, class: 'nav-link'
+              li
+                hr.dropdown-divider
+              li
+                = link_to t(:sign_out), destroy_user_session_path, method: :delete, class: 'nav-link'
+        - else
+          li.nav-item
+            = link_to t(:register), new_user_registration_path, class: 'nav-link'
+          li.nav-item
+            = link_to t(:sign_in), new_user_session_path, class: 'nav-link'
