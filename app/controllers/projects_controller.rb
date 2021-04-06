@@ -30,20 +30,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def do
-    @projects = current_user.projects.find_by(id: params[:id])
-    @projects.is_done = true
-    @projects.save
-    redirect_to projects_url
-  end
-
-  def undo
-    @projects = current_user.projects.find_by(id: params[:id])
-    @projects.is_done = false
-    @projects.save
-    redirect_to projects_url
-  end
-
   private
 
   def projects_params
