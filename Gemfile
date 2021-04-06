@@ -24,6 +24,7 @@ gem 'jquery'
 gem 'jquery-rails'
 gem 'slim'
 gem 'bootstrap-icons-helper'
+gem 'pagy'
 gem 'simplecov', require: false, group: :test
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

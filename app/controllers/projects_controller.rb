@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = current_user.projects
+    @pagy, @projects = pagy(current_user.projects, items: 12)
   end
 
   def show

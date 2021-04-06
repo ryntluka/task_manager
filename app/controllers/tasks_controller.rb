@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = current_user.tasks
+    @pagy, @tasks = pagy(current_user.tasks, items: 12)
   end
 
     def show
