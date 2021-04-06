@@ -72,3 +72,6 @@ en:
   new_task: ""
   unassigned: ""
   new_project: ""
+  the_task_has_been_removed: ""
+  the_task_was_saved_successfully: ""
+  please_review_the_problems_below: ""

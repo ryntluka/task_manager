@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @pagy, @projects = pagy(current_user.projects, items: 12)
+    @pagy, @projects = pagy(current_user.projects.order(:id), items: 12)
   end
 
   def show
@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to projects_url
     else
-      render json: @error = @projects.errors
+      redirect_to new_projects_path, notice: t('please_review_the_problems_below')
     end
   end
 

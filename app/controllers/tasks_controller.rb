@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @pagy, @tasks = pagy(current_user.tasks, items: 12)
+    @pagy, @tasks = pagy(current_user.tasks.order(:id), items: 12)
   end
 
   def show
@@ -17,7 +17,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.is_done = false
     if @task.save
-      redirect_to tasks_url
+      redirect_to tasks_url, notice: t('the_task_was_saved_successfully')
     else
       @error = @task.errors
     end
@@ -26,7 +26,7 @@ class TasksController < ApplicationController
   def destroy
     @task = current_user.tasks.find_by(id: params[:id])
     @task.destroy
-    redirect_to tasks_url, notice: 'The task has been removed'
+    redirect_to tasks_url, notice: t(:the_task_has_been_removed)
   end
 
   def do

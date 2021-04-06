@@ -1,6 +1,7 @@
 cs:
   hello_rails: "Ahoj Rails"
   tasks: "Úkoly"
+  task: "Úkol"
   projects: "Projekty"
   edit_profile: "Upravit profil"
   user: "Uživatel"
@@ -14,3 +15,17 @@ cs:
   project: "Projekt"
   unassigned: "Nepřiřazený"
   new_project: "Nový projekt"
+
+  activerecord:
+    attributes:
+      project:
+        title: "Titul"
+        user: "Uživatel"
+      task:
+        title: "Titul"
+        description: "Popis"
+        user: "Uživatel"
+        project: "Projekt"
+  the_task_has_been_removed: "Úkol byl smazán"
+  the_task_was_saved_successfully: "Úkol byl úspěšně uložen"
+  please_review_the_problems_below: "Zkontrolujte prosím vyplněný formulář"

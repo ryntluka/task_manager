@@ -5,6 +5,7 @@ en:
   sign_out: "Sign out"
   register: "Register"
   tasks: "Tasks"
+  task: "Task"
   sign_in: "Sign in"
   title: "Task manager"
   user: "User"
@@ -14,3 +15,17 @@ en:
   project: "Project"
   unassigned: "Unassigned"
   new_project: "New Project"
+
+  activerecord:
+    attributes:
+      project:
+        title: "Title"
+        user: "User"
+      task:
+        title: "Title"
+        description: "Description"
+        user: "User"
+        project: "Project"
+  the_task_has_been_removed: "The task has been removed"
+  the_task_was_saved_successfully: "The task was saved successfully"
+  please_review_the_problems_below: "Please review the problems below"
