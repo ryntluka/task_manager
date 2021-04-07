@@ -1,0 +1,41 @@
+cs:
+  simple_form:
+    "yes": 'Ano'
+    "no": 'Ne'
+    required:
+      text: 'povinný údaj'
+      mark: '*'
+
+    error_notification:
+      default_message: "Prosím zkontrolujte problémy níže:"
+
+    labels:
+      defaults:
+        password: 'Heslo'
+        title: 'Titul'
+        first_name: 'Jméno'
+        last_name: 'Příjmení'
+        password_confirmation: 'Ověření hesla'
+        current_password: 'Současné heslo'
+        remember_me: 'Zapamatuj si mě'
+
+      user:
+        new:
+          email: 'E-mail pro přihlášení'
+        edit:
+          email: 'E-mail'
+
+    hints:
+      defaults:
+        username: 'Uživatelské jméno pro přihlášení.'
+        password: 'Prosím nezadávejte speciální znaky.'
+
+    include_blanks:
+      defaults:
+        age: 'Raději neřeknu'
+
+    prompts:
+      defaults:
+        age: 'Vyber svůj věk'
+  update: "Aktualizovat"
+  edit: "Upravit"

@@ -17,6 +17,8 @@ cs:
   new_project: "Nový projekt"
 
   activerecord:
+    models:
+      user: Uživatel
     attributes:
       project:
         title: "Titul"
@@ -31,3 +33,8 @@ cs:
   please_review_the_problems_below: "Zkontrolujte prosím vyplněný formulář"
   are_you_sure_you_want_to_delete_this_item: "Opravdu chcete smazat tuto položku"
   created_by: "Vytvořil"
+  search: "Vyhledat"
+  all: "Vše"
+  active: "Aktivní"
+  finished: "Dokončené"
+  back: "Zpět"

@@ -45,3 +45,17 @@ cs:
         subject: 'Instrukce k nastavení nového hesla'
       unlock_instructions:
         subject: 'Instrukce k odemknutí účtu'
+  leave_it_blank_if_you_don_t_want_to_change_it: "nechte volné, pokud nechcete měnit"
+  we_need_your_current_password_to_confirm_your_chan: "potřebujeme Vaše současné heslo pro potvrzení změn"
+  cancel_my_account: "Zrušit účet"
+  are_you_sure: "Jste si jistý?"
+  sign_up: "Zaregistrovat se"
+  var_characters_minimum: "minimum je %{var} znaků"
+  log_in: "Přihlásit se"
+  forgot_your_password: "Zapomněli jste heslo?"
+  didn_t_receive_confirmation_instructions: "Nedostali jste potvrzovací instrukce?"
+  didn_t_receive_unlock_instructions: "Nedostali jste instrukce pro odemčení?"
+  sign_in_with_var: "Přihlásit se s %{var}"
+  edit_user: "Upravit uživatele"
+  send_me_reset_password_instructions: "Pošlete mi instrukce k obnovení hesla"
+  change_password: "Změnit heslo"

@@ -1,22 +1,29 @@
 = javascript_pack_tag 'switch_button'
 h1= t(:tasks)
-= simple_form_for :search, url: tasks_path, method: :get, html: { class: 'form-inline' } do |f|
-  = f.input :title, input_html: {value: ""}
-  = f.submit "Search", class: "btn btn-primary"
+
+= simple_form_for :search, url: tasks_path,
+        wrapper: :inline_form,
+        html: { class: 'form-inline' },
+        method: :get do |f|
+  .mb-2
+    = f.input :title, input_html: {value: ""}
+  .mb-2
+    = f.submit t('search'), class: "btn btn-primary"
+
 .btn-group
-  = link_to "All",
+  = link_to t('all'),
           tasks_path,
           class: "btn btn-outline-primary m-0 active",
           id: "btn1",
           method: :get,
           remote: true
-  = link_to "Active",
+  = link_to t('active'),
           tasks_path(request.query_parameters.merge({ done: false })),
           class: "btn btn-outline-primary",
           id: "btn2",
           method: :get,
           remote: true
-  = link_to "Finished",
+  = link_to t('finished'),
           tasks_path(request.query_parameters.merge({ done: true })),
           class: "btn btn-outline-primary",
           id: "btn3",
