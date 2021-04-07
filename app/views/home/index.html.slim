@@ -1,2 +1,4 @@
 h1= t(:title)
 p.text-justify = t(:intro_message)
+- if user_signed_in?
+  p.text-justify = t('welcome_first_name_last_name', first_name: current_user.first_name, last_name: current_user.last_name)

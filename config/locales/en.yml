@@ -40,3 +40,4 @@ en:
   edit_task: "Edit task"
   attachment: "Attachment"
   assigned_to: "Assigned to"
+  welcome_first_name_last_name: "Welcome %{first_name} %{last_name}!"

@@ -42,3 +42,4 @@ cs:
   edit_task: "Upravit úkol"
   attachment: "Příloha"
   assigned_to: "Přiděleno k"
+  welcome_first_name_last_name: "Vítej %{first_name} %{last_name}!"
