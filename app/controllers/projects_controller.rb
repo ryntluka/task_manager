@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @pagy, @projects = pagy(current_user.projects.order(:id), items: 12)
+    @pagy, @projects = pagy(current_user.projects.includes([:tasks]).order(:id), items: 12)
   end
 
   def show

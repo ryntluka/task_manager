@@ -26,6 +26,10 @@ gem 'slim'
 gem 'bootstrap-icons-helper'
 gem 'pagy'
 gem 'rails-i18n', '~> 6.0.0'
+gem 'bullet', group: 'development'
+gem 'ruby-growl'
+gem 'uniform_notifier'
+gem 'xmpp4r'
 gem 'simplecov', require: false, group: :test
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
