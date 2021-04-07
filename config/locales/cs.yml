@@ -39,3 +39,6 @@ cs:
   finished: "Dokončené"
   back: "Zpět"
   intro_message: "Toto je fiktivní aplikaci pro správu úkolů v projektech"
+  edit_task: "Upravit úkol"
+  attachment: "Příloha"
+  assigned_to: "Přiděleno k"

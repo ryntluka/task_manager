@@ -7,7 +7,7 @@
         h3.card-title.text-center.py-1.m-0
           = link_to task.title, task_path(task), class: "text-dark"
       .card-body
-        p.card-text = task.description
+        p.card-text = truncate(task.description, length: 200)
         p.card-text = task.attachment
         hr
         .button-row

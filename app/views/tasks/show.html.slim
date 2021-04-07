@@ -3,17 +3,26 @@
     = link_to edit_task_path(@task), class: "btn btn-#{@task.is_done ? "success" : "warning"} mx-0" do
       i.bi.bi-pen
     .h2.card-title.text-center = @task.title
-  .d-flex.flex-row.extend-window
-    .card-body
+  .extend-window
+    .task-detail-description
       p.text-justify = @task.description
     .card-body
       p
         =t(:project)
         ':
         - if @task.project
-          = link_to @task.project.title, project_path(@task.project)
+          = link_to @task.project.title, project_path(@task.project), class: "text-secondary"
         - else
           = t(:unassigned)
-  = link_to url_for(:back), class: "align-left btn mx-auto btn-primary mb-2" do
-    ' Back
+      hr
+      p
+        = t(:attachment)
+        ':
+        p.text-secondary = @task.attachment
+      hr
+      .d-flex.flex-row
+        p = t('assigned_to')
+        ':
+        p.px-2.text-secondary = " #{@task.user.first_name} #{@task.user.last_name}"
+  = link_to tasks_path, class: "align-left btn mx-auto btn-primary mb-2" do
     i.bi.bi-arrow-counterclockwise

@@ -1,15 +1,4 @@
 = stylesheet_link_tag 'tasks', media: 'all'
 
-h2= t(:new_task)
-.m-2
-  = simple_form_for @task, url: task_path(@task) do |f|
-    .mb-2
-      = f.input :title, required: true
-    .mb-2
-      = f.input :description, required: false
-    .mb-2
-      = f.association :user, label_method: lambda { |user| "#{user.first_name} #{user.last_name}" }
-    .mb-2
-      = f.association :project, label_method: lambda { |project| project.title }
-    .form-actions
-      = f.button :submit, t(:save)
+h2.mx-0 = t(:edit_task)
+= render 'tasks/partials/form'

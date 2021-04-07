@@ -98,3 +98,6 @@ en:
   edit_user: "Edit User"
   send_me_reset_password_instructions: "Send me reset password instructions"
   change_password: "Change password"
+  edit_task: ""
+  attachment: ""
+  assigned_to: ""

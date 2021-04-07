@@ -14,5 +14,15 @@
 }
 
 .extend-window {
-  min-height: 65vh
+  min-height: 65vh;
+  margin: 2rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.task-detail-description {
+  width: 75%;
+  padding: 1rem;
+  text-align: justify;
+  border-right: darkgray 1px solid;
 }

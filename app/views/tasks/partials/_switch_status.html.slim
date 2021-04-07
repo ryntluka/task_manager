@@ -1,0 +1,21 @@
+= javascript_pack_tag 'switch_button'
+
+.btn-group
+  = link_to t('all'),
+          tasks_path,
+          class: "btn btn-outline-primary m-0 active",
+          id: "btn1",
+          method: :get,
+          remote: true
+  = link_to t('active'),
+          tasks_path(request.query_parameters.merge({ done: false })),
+          class: "btn btn-outline-primary",
+          id: "btn2",
+          method: :get,
+          remote: true
+  = link_to t('finished'),
+          tasks_path(request.query_parameters.merge({ done: true })),
+          class: "btn btn-outline-primary",
+          id: "btn3",
+          method: :get,
+          remote: true
