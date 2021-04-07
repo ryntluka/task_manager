@@ -43,6 +43,16 @@ class TasksController < ApplicationController
     redirect_to tasks_url, flash: {warning: t(:the_task_has_been_removed)}
   end
 
+  def edit
+    @task = current_user.tasks.find_by(id: params[:id])
+  end
+
+  def update
+    @task = current_user.tasks.find(params[:id])
+    @task.update(task_params)
+    redirect_to task_path(@task), flash: {success: t('the_task_was_saved_successfully')}
+  end
+
   def do
     @task = @tasks.find_by(id: params[:id])
     @task.is_done = true
