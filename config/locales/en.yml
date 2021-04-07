@@ -36,3 +36,4 @@ en:
   active: "Active"
   finished: "Finished"
   back: "Back"
+  intro_message: "This is a fictional app for managing tasks. You can add new tasks and link them to projects and tags. Have fun!"

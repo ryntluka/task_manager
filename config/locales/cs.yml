@@ -38,3 +38,4 @@ cs:
   active: "Aktivní"
   finished: "Dokončené"
   back: "Zpět"
+  intro_message: "Toto je fiktivní aplikaci pro správu úkolů v projektech"
