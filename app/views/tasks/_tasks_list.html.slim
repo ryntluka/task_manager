@@ -1,0 +1,20 @@
+.row
+  - @tasks.each do |task|
+    .card.w-25.m-2.p-0 class=(task.is_done ? 'border-success' : 'border-warning')
+      .card-header class=(task.is_done ? 'bg-success' : 'bg-warning')
+        h3.card-title.text-center.py-1.m-0
+          = link_to task.title, task_path(task), class: "text-dark"
+      .card-body
+        p.card-text = task.description
+        p.card-text = task.attachment
+        hr
+        .button-row
+          - unless task.is_done
+            = button_to do_task_path(task), class: 'btn btn-outline-warning', method: :put, remote: true do
+              i.bi.bi-check2
+          - else
+            = button_to undo_task_path(task), class: 'btn btn-outline-success', method: :delete, remote: true do
+              i.bi.bi-arrow-counterclockwise
+          = button_to task_path(task), method: :delete, class: 'btn btn-danger',
+                  data: {confirm: t('are_you_sure_you_want_to_delete_this_item')} do
+            i.bi.bi-trash

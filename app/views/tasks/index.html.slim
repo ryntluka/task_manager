@@ -1,33 +1,31 @@
+= javascript_pack_tag 'switch_button'
 h1= t(:tasks)
+= simple_form_for :search, url: tasks_path, method: :get, html: { class: 'form-inline' } do |f|
+  = f.input :title, input_html: {value: ""}
+  = f.submit "Search", class: "btn btn-primary"
 .btn-group
-  = link_to "All", tasks_path, class: "btn btn-outline-primary active"
-  = link_to "Finished", finished_tasks_path, class: "btn btn-outline-primary"
-  = link_to "Active", active_tasks_path, class: "btn btn-outline-primary"
-
-.row
-  - @tasks.each do |task|
-    .card.w-25.m-2.p-0 class=(task.is_done ? 'border-success' : 'border-warning')
-      .card-header class=(task.is_done ? 'bg-success' : 'bg-warning')
-        h3.card-title.text-center.py-1.m-0
-          = link_to task.title, task_path(task), class: "text-dark"
-      .card-body
-        p.card-text = task.description
-        p.card-text = task.attachment
-        hr
-        .button-row
-          - unless task.is_done
-            = button_to do_task_path(task), class: 'btn btn-outline-warning', method: :put do
-              i.bi.bi-check2
-          - else
-            = button_to undo_task_path(task), class: 'btn btn-outline-success', method: :delete do
-              i.bi.bi-arrow-counterclockwise
-          = button_to task_path(task), method: :delete, class: 'btn btn-danger',
-                  data: {confirm: t('are_you_sure_you_want_to_delete_this_item')} do
-            i.bi.bi-trash
-== pagy_bootstrap_nav(@pagy)
+  = link_to "All",
+          tasks_path,
+          class: "btn btn-outline-primary m-0 active",
+          id: "btn1",
+          method: :get,
+          remote: true
+  = link_to "Active",
+          tasks_path(request.query_parameters.merge({ done: false })),
+          class: "btn btn-outline-primary",
+          id: "btn2",
+          method: :get,
+          remote: true
+  = link_to "Finished",
+          tasks_path(request.query_parameters.merge({ done: true })),
+          class: "btn btn-outline-primary",
+          id: "btn3",
+          method: :get,
+          remote: true
+#tasks-container
+  = render 'tasks/tasks_list'
+/ == pagy_bootstrap_nav(@pagy)
 = link_to new_task_path, class: 'btn' do
   = t(:create_new)
   '
   i.bi.bi-plus
-
-
