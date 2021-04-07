@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title = content_for?(:title) ? yield(:title) : "Task Manager"
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_pack_tag 'application', 'data-turbolinks-track' => true
+
+  body
+    header
+      = render 'shared/navbar'
+      .container.mt-2
+        - flash.each do |type, msg|
+          - if type == "notice"
+            - type = "info"
+          .alert class="alert-#{type} alert-dismissible"
+            = msg
+    .container
+      = yield
+      = render 'shared/footer'
