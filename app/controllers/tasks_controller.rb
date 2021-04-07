@@ -1,12 +1,26 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
+  respond_to :html, :js
+  # before_action :index, only: [:undo, :do]
 
   def new
     @task = Task.new
   end
 
   def index
-    @pagy, @tasks = pagy(current_user.tasks.order(:id), items: 12)
+    @tasks_list = current_user.tasks.order(:id)
+    @search = params["search"]
+    @done = params["done"]
+    logger.debug(@done)
+    if @search.present?
+      @title = @search["title"]
+      @tasks_list = current_user.tasks.search_by_title(@title)
+    end
+    if @done.present?
+      @tasks_list = @tasks_list.filter_by_done(@done)
+    end
+    @tasks = @tasks_list
+    # @pagy, @tasks = pagy(@tasks_list, items: 12)
   end
 
   def show
@@ -30,33 +44,27 @@ class TasksController < ApplicationController
   end
 
   def do
-    @task = current_user.tasks.find_by(id: params[:id])
+    @task = @tasks.find_by(id: params[:id])
     @task.is_done = true
     @task.save
-    redirect_to tasks_url
+    @tasks.find_by(id: params[:id])
   end
 
   def undo
-    @task = current_user.tasks.find_by(id: params[:id])
+    @task = @tasks.find_by(id: params[:id])
+    logger.debug(@task)
     @task.is_done = false
     @task.save
-    redirect_to tasks_url
-  end
-
-  def active
-    @pagy, @tasks = pagy(current_user.tasks.select {|task| not task.is_done })
-    redirect_to tasks_url
-  end
-
-  def finished
-    # @tasks = current_user.tasks.select {|task| task.is_done }
-    redirect_to tasks_url
   end
 
   private
 
   def task_params
     params.require(:task).permit(:title, :description, :user_id, :project_id)
+  end
+
+  def index_params
+    params.permit :done
   end
 
 end
