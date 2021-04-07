@@ -43,6 +43,16 @@ class TasksController < ApplicationController
     redirect_to tasks_url
   end
 
+  def active
+    @pagy, @tasks = pagy(current_user.tasks.select {|task| not task.is_done })
+    redirect_to tasks_url
+  end
+
+  def finished
+    # @tasks = current_user.tasks.select {|task| task.is_done }
+    redirect_to tasks_url
+  end
+
   private
 
   def task_params

@@ -1,4 +1,9 @@
 h1= t(:tasks)
+.btn-group
+  = link_to "All", tasks_path, class: "btn btn-outline-primary active"
+  = link_to "Finished", finished_tasks_path, class: "btn btn-outline-primary"
+  = link_to "Active", active_tasks_path, class: "btn btn-outline-primary"
+
 .row
   - @tasks.each do |task|
     .card.w-25.m-2.p-0 class=(task.is_done ? 'border-success' : 'border-warning')
@@ -17,7 +22,7 @@ h1= t(:tasks)
             = button_to undo_task_path(task), class: 'btn btn-outline-success', method: :delete do
               i.bi.bi-arrow-counterclockwise
           = button_to task_path(task), method: :delete, class: 'btn btn-danger',
-                  data: {confirm: "Are you sure you want to delete this item"} do
+                  data: {confirm: t('are_you_sure_you_want_to_delete_this_item')} do
             i.bi.bi-trash
 == pagy_bootstrap_nav(@pagy)
 = link_to new_task_path, class: 'btn' do

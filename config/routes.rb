@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :tasks
   put '/tasks/complete/:id', to: 'tasks#do', as: 'do_task'
   delete '/tasks/complete/:id', to: 'tasks#undo', as: 'undo_task'
+  get '/tasks/finished', to: 'tasks#finished', as: 'finished_tasks'
+  get '/tasks/active', to: 'tasks#active', as: 'active_tasks'
 
   resources :projects
 end
