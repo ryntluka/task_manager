@@ -43,3 +43,8 @@ cs:
   attachment: "Příloha"
   assigned_to: "Přiděleno k"
   welcome_first_name_last_name: "Vítej %{first_name} %{last_name}!"
+  the_project_was_saved_successfully: "Projekt byl úspěšně uložen"
+  created_at: "Vytvořeno dne"
+  updated_at: "Upraveno dne"
+  time_of_last_update: "Čas poslední úpravy"
+  time_of_creation: "Čas vytvoření"

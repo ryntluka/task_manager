@@ -4,25 +4,20 @@
       i.bi.bi-pen
     .h2.card-title.text-center = @task.title
   .extend-window
-    .task-detail-description
+    .detail-description
       p.text-justify = @task.description
     .card-body
-      p
-        =t(:project)
-        ':
+      = render partial: 'shared/common_details', locals: { entity: @task }
+      hr
+      .d-flex.flex-row
+        p = "#{t(:project)}:"
         - if @task.project
           = link_to @task.project.title, project_path(@task.project), class: "text-secondary"
         - else
-          = t(:unassigned)
-      hr
-      p
-        = t(:attachment)
-        ':
-        p.text-secondary = @task.attachment
+          p.text-secondary = t(:unassigned)
       hr
       .d-flex.flex-row
-        p = t('assigned_to')
-        ':
-        p.px-2.text-secondary = " #{@task.user.first_name} #{@task.user.last_name}"
+        = "#{t(:attachment)}:"
+        p.px-2.text-secondary = @task.attachment
   = link_to tasks_path, class: "align-left btn mx-auto btn-primary mb-2" do
     i.bi.bi-arrow-counterclockwise

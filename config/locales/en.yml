@@ -41,3 +41,7 @@ en:
   attachment: "Attachment"
   assigned_to: "Assigned to"
   welcome_first_name_last_name: "Welcome %{first_name} %{last_name}!"
+  the_project_was_saved_successfully: "The project was saved successfully"
+  created_at: "Created at"
+  updated_at: "Updated at"
+  time_of_creation: "Time of creation"

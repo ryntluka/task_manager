@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(projects_params)
+    @project = Project.new(project_params)
     @project.position = 1
     if @project.valid?
       @project.save
@@ -31,9 +31,19 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def edit
+    @project = current_user.projects.find_by(id: params[:id])
+  end
+
+  def update
+    @project = current_user.projects.find(params[:id])
+    @project.update(project_params)
+    redirect_to project_path(@project), flash: {success: I18n.t('the_project_was_saved_successfully')}
+  end
+
   private
 
-  def projects_params
+  def project_params
     params.require(:project).permit(:title, :user_id)
   end
 end

@@ -102,3 +102,8 @@ en:
   attachment: ""
   assigned_to: ""
   welcome_first_name_last_name: ""
+  the_project_was_saved_successfully: ""
+  created_at: ""
+  updated_at: ""
+  time_of_last_update: "Time of last update"
+  time_of_creation: ""
