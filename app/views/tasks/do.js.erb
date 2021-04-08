@@ -1,1 +1,1 @@
-$("#tasks-container").html("<%= j render 'tasks/partials/list' %>");
+$("#task-<%= @task.id %>").html("<%= j render 'tasks/partials/index_detail', task: @task %>");

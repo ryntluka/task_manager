@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   respond_to :html, :js
-  # before_action :index, only: [:undo, :do]
 
   def new
     @task = Task.new
@@ -11,10 +10,9 @@ class TasksController < ApplicationController
     @tasks_list = current_user.tasks.order(:id)
     @search = params["search"]
     @done = params["done"]
-    logger.debug(@done)
     if @search.present?
       @title = @search["title"]
-      @tasks_list = current_user.tasks.search_by_title(@title)
+      @tasks_list = @tasks_list.search_by_title(@title)
     end
     if @done.present?
       @tasks_list = @tasks_list.filter_by_done(@done)
@@ -54,17 +52,19 @@ class TasksController < ApplicationController
   end
 
   def do
-    @task = @tasks.find_by(id: params[:id])
+    @task = current_user.tasks.find_by(id: params[:id])
     @task.is_done = true
     @task.save
-    @tasks.find_by(id: params[:id])
+    logger.debug("UNDO")
+    logger.debug(@task)
   end
 
   def undo
-    @task = @tasks.find_by(id: params[:id])
-    logger.debug(@task)
+    @task = current_user.tasks.find_by(id: params[:id])
     @task.is_done = false
     @task.save
+    logger.debug("UNDO")
+    logger.debug(@task)
   end
 
   private

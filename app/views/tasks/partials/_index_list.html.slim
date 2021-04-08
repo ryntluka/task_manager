@@ -1,0 +1,4 @@
+.row
+  - @tasks.each do |task|
+    .task-card id="task-#{task.id}"
+      = render partial: 'tasks/partials/index_detail', locals: {task: task}

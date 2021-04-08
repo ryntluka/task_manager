@@ -11,7 +11,7 @@ h1= t(:tasks)
 
 = render 'tasks/partials/switch_status'
 #tasks-container
-  = render 'tasks/partials/list'
+  = render 'tasks/partials/index_list'
 / == pagy_bootstrap_nav(@pagy)
 = link_to new_task_path, class: 'btn' do
   = t(:create_new)
