@@ -16,10 +16,12 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.position = 1
+    @project.user = current_user
     if @project.valid?
       @project.save
-      redirect_to projects_url, flash: {success: "Project saved successfully"}
+      redirect_to projects_url, flash: {success: t(:project_saved_successfully)}
     else
+      flash.now[:danger] = t(:please_review_the_problems_below)
       render :new
     end
   end
@@ -37,13 +39,14 @@ class ProjectsController < ApplicationController
 
   def update
     @project = current_user.projects.find(params[:id])
+    @project.user = current_user
     @project.update(project_params)
-    redirect_to project_path(@project), flash: {success: I18n.t('the_project_was_saved_successfully')}
+    redirect_to project_path(@project), flash: {success: t('the_project_was_saved_successfully')}
   end
 
   private
 
   def project_params
-    params.require(:project).permit(:title, :user_id)
+    params.require(:project).permit(:title)
   end
 end

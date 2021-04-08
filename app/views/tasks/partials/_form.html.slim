@@ -1,10 +1,8 @@
-= simple_form_for @task, url: task_path(@task) do |f|
+= simple_form_for @task, url: url do |f|
   .mb-2
     = f.input :title, required: true
   .mb-2
     = f.input :description, required: false
-  .mb-2
-    = f.association :user, label_method: lambda { |user| "#{user.first_name} #{user.last_name}" }
   .mb-2
     = f.association :project, label_method: lambda { |project| project.title }
   .form-actions

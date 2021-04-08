@@ -1,4 +1,4 @@
 = stylesheet_link_tag 'tasks', media: 'all'
 
 h2.mx-2= t(:new_task)
-= render 'tasks/partials/form'
+= render 'tasks/partials/form', url: tasks_path

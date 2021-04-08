@@ -27,6 +27,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user = current_user
     @task.is_done = false
     if @task.save
       redirect_to tasks_url, flash: {success: t('the_task_was_saved_successfully')}
@@ -47,6 +48,7 @@ class TasksController < ApplicationController
 
   def update
     @task = current_user.tasks.find(params[:id])
+    @task.user = current_user
     @task.update(task_params)
     redirect_to task_path(@task), flash: {success: t('the_task_was_saved_successfully')}
   end
@@ -70,7 +72,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :user_id, :project_id)
+    params.require(:task).permit(:title, :description, :project_id)
   end
 
   def index_params
