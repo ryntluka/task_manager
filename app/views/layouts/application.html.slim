@@ -16,6 +16,8 @@ html
         - flash.each do |type, msg|
           - if type == "notice"
             - type = "info"
+          - if type == "alert"
+            - type = "danger"
           .alert class="alert-#{type} alert-dismissible"
             = msg
     .container

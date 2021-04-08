@@ -15,5 +15,5 @@ hr
   p.px-2.text-secondary = entity.updated_at.strftime("%k:%M")
 hr
 .d-flex.flex-row
-  p = "#{t(:assigned_to)}:"
+  p = "#{t(:assigned_to)}:&nbsp;"
   p.px-2.text-secondary = "#{entity.user.first_name} #{entity.user.last_name}"
