@@ -1,0 +1,14 @@
+.card-body.button-row.border-top.bg-light
+    = button_to back_url,
+            class: "btn btn-primary text-dark",
+            method: :get do
+        i.bi.bi-arrow-counterclockwise
+    = button_to edit_url,
+            class: "btn btn-success text-dark",
+            method: :get do
+        i.bi.bi-pen
+    = button_to destroy_url,
+            method: :delete,
+            class: 'btn btn-danger text-dark',
+            data: {confirm: t('are_you_sure_you_want_to_delete_this_item')} do
+        i.bi.bi-trash

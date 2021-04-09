@@ -1,7 +1,5 @@
 .card.w-100
   .card-header
-    = link_to edit_project_path(@project), class: "btn btn-light text-dark mx-0" do
-      i.bi.bi-pen
     .h2.card-title.text-center = @project.title
   .extend-window
     .detail-description
@@ -12,6 +10,5 @@
                   task_path(task),
                   class: "text-dark m-0 list-group-item list-group-item-action #{task.is_done ? "bg-success" : "bg-warning"}"
     .card-body
-      = render partial: 'shared/common_details', locals: { entity: @project }
-  = link_to projects_path, class: "align-left btn mx-auto btn-primary mb-2" do
-    i.bi.bi-arrow-counterclockwise
+      = render 'shared/common_details', entity: @project
+  = render 'shared/detail_options', back_url: projects_path, edit_url: edit_project_path(@project), destroy_url: project_path(@project)

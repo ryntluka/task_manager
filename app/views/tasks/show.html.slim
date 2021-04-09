@@ -19,5 +19,4 @@
       .d-flex.flex-row
         = "#{t(:attachment)}:"
         p.px-2.text-secondary = @task.attachment
-  = link_to tasks_path, class: "align-left btn mx-auto btn-primary mb-2" do
-    i.bi.bi-arrow-counterclockwise
+  = render 'shared/detail_options', back_url: tasks_path, edit_url: edit_task_path(@task), destroy_url: task_path(@task)
