@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
 
-  has_many :projects
-  has_many :tasks
-  has_many :tags
+  has_many :projects, dependent: :destroy
+  has_many :tasks, dependent: :destroy
+  has_many :tags, dependent: :destroy
 end
