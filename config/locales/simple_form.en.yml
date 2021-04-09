@@ -18,6 +18,7 @@ en:
         password_confirmation: 'Password confirmation'
         current_password: 'Current password'
         remember_me: 'Remember me'
+        tags: 'Tags'
 
       user:
         new:

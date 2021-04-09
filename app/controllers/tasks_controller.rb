@@ -4,6 +4,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @task.issues.build
   end
 
   def index
@@ -27,6 +28,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    logger.debug(@task)
     @task.user = current_user
     @task.is_done = false
     if @task.save
@@ -69,6 +71,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :project_id)
+    params.require(:task).permit(:title, :description, :project_id, :tag_ids => [])
   end
 end

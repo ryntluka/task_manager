@@ -5,5 +5,7 @@
     = f.input :description, required: false
   .mb-2
     = f.association :project, label_method: lambda { |project| project.title }
+  .mb-2
+    = f.association :tags, as: :check_boxes, item_wrapper_tag: :div
   .form-actions
     = f.button :submit, t(:save)

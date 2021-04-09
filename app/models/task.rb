@@ -6,6 +6,7 @@ class Task < ApplicationRecord
   belongs_to :project, optional: true
   has_many :issues
   has_many :tags, through: :issues
+  accepts_nested_attributes_for :issues
 
   scope :active, -> { where is_done: false }
   scope :filter_by_done, ->(done) { where is_done: done }

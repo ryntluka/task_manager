@@ -3,9 +3,18 @@
     .h2.card-title.text-center = @task.title
   .extend-window
     .detail-description
+      h4 = t(:'activerecord.attributes.task.description')
       p.text-justify = @task.description
+      hr
+      h4 = t(:tags)
+      ul.list-group
+        - @task.tags.each do |tag|
+          = link_to tag.title,
+                  tag_path(tag),
+                  class: "text-dark m-0 list-group-item list-group-item-action"
+
     .card-body
-      = render partial: 'shared/common_details', locals: { entity: @task }
+      = render 'shared/common_details', entity: @task
       hr
       .d-flex.flex-row
         p = "#{t(:project)}:"

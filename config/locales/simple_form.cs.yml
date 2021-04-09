@@ -18,6 +18,7 @@ cs:
         password_confirmation: 'Ověření hesla'
         current_password: 'Současné heslo'
         remember_me: 'Zapamatuj si mě'
+        tags: 'Tagy'
 
       user:
         new:
