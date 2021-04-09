@@ -10,7 +10,6 @@ class TasksController < ApplicationController
   def index
     tasks_list = current_user.tasks.order(:id)
     @done = params["done"]
-    logger.debug("HERE")
     if params["search"].present?
       @title = params["search"]["title"]
       tasks_list = tasks_list.search_by_title(@title)
@@ -19,7 +18,7 @@ class TasksController < ApplicationController
       tasks_list = tasks_list.filter_by_done(@done)
     end
     @tasks = tasks_list
-    @pagy, @tasks = pagy(tasks_list, items: 12)
+    @pagy, @tasks = pagy(tasks_list.includes([:project, :issues, :tags]), items: 12)
   end
 
   def show

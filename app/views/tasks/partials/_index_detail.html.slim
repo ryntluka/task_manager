@@ -8,6 +8,19 @@
     p.card-text = truncate(task.description, length: 200)
     p.card-text = task.attachment
     hr
+    .d-flex.flex-row
+      p= "#{t(:project)}:"
+      - if task.project
+        = link_to task.project.title, project_path(task.project), class: "secondary-text"
+      - else
+        p.secondary-text = t(:unassigned)
+    hr
+    - if task.tags.length != 0
+      .d-flex.flex-row
+        p= "#{t(:tags)}:"
+        - task.tags.each do |tag|
+          = link_to tag.title, tag_path(tag), class: "secondary-text"
+      hr
     .button-row
       - unless task.is_done
         = button_to do_task_path(task), class: 'btn btn-outline-warning', method: :put, remote: true do

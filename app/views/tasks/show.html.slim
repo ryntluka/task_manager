@@ -19,11 +19,11 @@
       .d-flex.flex-row
         p= "#{t(:project)}:"
         - if @task.project
-          = link_to @task.project.title, project_path(@task.project), class: "text-secondary px-2"
+          = link_to @task.project.title, project_path(@task.project), class: "secondary-text"
         - else
-          p.px-2.text-secondary = t(:unassigned)
+          p.secondary-text = t(:unassigned)
       hr
       .d-flex.flex-row
         = "#{t(:attachment)}:"
-        p.px-2.text-secondary = @task.attachment
+        p.secondary-text = @task.attachment
   = render 'shared/detail_options', back_url: tasks_path, edit_url: edit_task_path(@task), destroy_url: task_path(@task)
