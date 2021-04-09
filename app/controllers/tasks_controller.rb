@@ -70,10 +70,10 @@ class TasksController < ApplicationController
   private
 
   def task_create_params
-    params.require(:task).permit(:title, :description, :project_id, :tag_ids => [])
+    params.require(:task).permit(:title, :description, :project_id, :attachment, :tag_ids => [])
   end
 
   def task_update_params
-    params.require(:task).permit(:title, :description, :project_id, :is_done, :tag_ids => [])
+    params.require(:task).permit(:title, :description, :project_id, :attachment, :is_done, :tag_ids => [])
   end
 end

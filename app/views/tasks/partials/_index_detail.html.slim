@@ -6,7 +6,6 @@
       = link_to highlight(task.title, @title), task_path(task), class: "text-dark"
   .card-body
     p.card-text = truncate(task.description, length: 200)
-    p.card-text = task.attachment
     hr
     .d-flex.flex-row
       p= "#{t(:project)}:"

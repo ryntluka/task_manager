@@ -6,6 +6,7 @@ class Task < ApplicationRecord
   belongs_to :project, optional: true
   has_many :issues
   has_many :tags, through: :issues
+  has_one_attached :attachment
   accepts_nested_attributes_for :issues
 
   scope :active, -> { where is_done: false }

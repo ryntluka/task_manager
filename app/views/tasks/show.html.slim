@@ -22,8 +22,9 @@
           = link_to @task.project.title, project_path(@task.project), class: "secondary-text"
         - else
           p.secondary-text = t(:unassigned)
-      hr
-      .d-flex.flex-row
-        = "#{t(:attachment)}:"
-        p.secondary-text = @task.attachment
+      - if @task.attachment.present?
+        hr
+        .d-flex.flex-row
+          = "#{t(:attachment)}:"
+          = link_to @task.attachment.filename, rails_blob_path(@task.attachment, disposition: 'preview'), class: "secondary-text"
   = render 'shared/detail_options', back_url: tasks_path, edit_url: edit_task_path(@task), destroy_url: task_path(@task)
