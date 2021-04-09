@@ -10,6 +10,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
             = link_to t(:tasks), tasks_path, class: 'nav-link'
           li
             = link_to t(:projects), projects_path, class: 'nav-link'
+          li
+            = link_to t(:tags), tags_path, class: 'nav-link'
           li.nav-item.dropdown
             a#navbarDropdownMenuLink.nav-link.dropdown-toggle href="#" role="button" data-toggle="dropdown" aria-expanded="false"
               = t(:user)

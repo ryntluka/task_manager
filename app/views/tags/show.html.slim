@@ -1,0 +1,14 @@
+.card.w-100
+  .card-header
+    .h2.card-title.text-center = @tag.title
+  .extend-window
+    .detail-description
+      h4 = t(:tasks)
+      ul.list-group
+        - @tag.tasks.each do |task|
+          = link_to task.title,
+                  task_path(task),
+                  class: "text-dark m-0 list-group-item list-group-item-action #{task.is_done ? "bg-success" : "bg-warning"}"
+    .card-body
+      = render 'shared/common_details', entity: @tag
+  = render 'shared/detail_options', back_url: tags_path, edit_url: edit_tag_path(@tag), destroy_url: tag_path(@tag)

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   put '/tasks/complete/:id', to: 'tasks#do', as: 'do_task'
   delete '/tasks/complete/:id', to: 'tasks#undo', as: 'undo_task'
   resources :projects
+  resources :tags
 end
