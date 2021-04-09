@@ -4,4 +4,6 @@ class Project < ApplicationRecord
 
   has_many :tasks
   belongs_to :user
+
+  scope :search_by_title, ->(title) { where("title ILIKE ?", "%#{title}%") }
 end

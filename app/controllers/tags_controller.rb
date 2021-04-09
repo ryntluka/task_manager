@@ -6,7 +6,12 @@ class TagsController < ApplicationController
   end
 
   def index
-    @pagy, @tags = pagy(current_user.tags.order(:id), items: 12)
+    @tags_list = current_user.tags
+    if params["search"].present?
+      @title = params["search"]["title"]
+      @tags_list = @tags_list.search_by_title(@title)
+    end
+    @pagy, @tags = pagy(@tags_list.order(:id), items: 12)
   end
 
   def show

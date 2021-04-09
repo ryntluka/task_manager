@@ -3,7 +3,7 @@
     = link_to edit_project_path(project), class: "btn btn-ligth text-dark mx-0" do
       i.bi.bi-pen
     h3.card-title.text-center.py-1.m-0
-      = link_to project.title, project_path(project), class: "text-dark"
+      = link_to highlight(project.title, @title), project_path(project), class: "text-dark"
   .card-body
     .card-header = t(:tasks)
     ul.list-group.list-group-flush

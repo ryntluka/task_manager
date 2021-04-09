@@ -6,7 +6,15 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @pagy, @projects = pagy(current_user.projects.includes([:tasks]).order(:id), items: 12)
+    projects_list = current_user.projects
+    if params["search"].present?
+      @title = params["search"]["title"]
+      logger.debug("HERE")
+      logger.debug(@title)
+      logger.debug("HERE")
+      projects_list = projects_list.search_by_title(@title)
+    end
+    @pagy, @projects = pagy(projects_list.includes([:tasks]).order(:id), items: 12)
   end
 
   def show
