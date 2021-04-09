@@ -9,10 +9,10 @@ class TasksController < ApplicationController
 
   def index
     @tasks_list = current_user.tasks.order(:id)
-    @search = params["search"]
     @done = params["done"]
-    if @search.present?
-      @title = @search["title"]
+    logger.debug("HERE")
+    if params["search"].present?
+      @title = params["search"]["title"]
       @tasks_list = @tasks_list.search_by_title(@title)
     end
     if @done.present?

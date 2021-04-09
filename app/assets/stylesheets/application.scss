@@ -62,3 +62,16 @@ caption {
   clear: both;
 }
 
+mark {
+  background-color: yellow;
+  opacity: 0.5;
+}
+
+#search-input-field {
+  margin: 0 2rem 2rem 0;
+}
+
+#search-submit {
+  height: 50%;
+  margin-top: 1.5rem;
+}

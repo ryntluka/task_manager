@@ -1,0 +1,9 @@
+= simple_form_for :search, url: url,
+        wrapper: :inline_form,
+        html: { class: 'form-inline' },
+        method: :get do |f|
+  .d-flex
+    #search-input-field
+      = f.input :title, input_html: {value: ""}
+    #search-submit
+      = f.submit t(:search), class: "btn btn-primary"
