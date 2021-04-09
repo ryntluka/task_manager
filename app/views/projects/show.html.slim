@@ -10,5 +10,9 @@
                   task_path(task),
                   class: "text-dark m-0 list-group-item list-group-item-action #{task.is_done ? "bg-success" : "bg-warning"}"
     .card-body
+      .d-flex.flex-row
+        p = "#{t(:position)}:"
+        p.secondary-text= @project.position
+      hr
       = render 'shared/common_details', entity: @project
   = render 'shared/detail_options', back_url: projects_path, edit_url: edit_project_path(@project), destroy_url: project_path(@project)

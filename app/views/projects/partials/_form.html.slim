@@ -1,5 +1,7 @@
 = simple_form_for @project, url: url do |f|
   .mb-2
     = f.input :title, required: true
+  .mb-2
+    = f.input :position, required: true
   .form-actions
     = f.button :submit, t(:save)

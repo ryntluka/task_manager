@@ -23,6 +23,7 @@ cs:
       project:
         title: "Titul"
         user: "Uživatel"
+        position: "Pozice"
       task:
         title: "Titul"
         description: "Popis"
@@ -58,3 +59,4 @@ cs:
   detail: "Detail"
   delete: "Smazat"
   edit_project: "Upravit projekt"
+  position: "Pozice"

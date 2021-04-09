@@ -12,7 +12,7 @@ hr
 hr
 .d-flex.flex-row
   p = "#{t(:time_of_last_update)}:"
-  p.px-2.text-secondary = entity.updated_at.strftime("%k:%M")
+  p.secondary-text= entity.updated_at.strftime("%k:%M")
 hr
 .d-flex.flex-row
   p = "#{t(:assigned_to)}:"

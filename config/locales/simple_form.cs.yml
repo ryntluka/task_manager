@@ -20,6 +20,7 @@ cs:
         remember_me: 'Zapamatuj si mě'
         tags: 'Tagy'
         is_done: 'Je dokončený'
+        position: 'Pozice'
 
       user:
         new:

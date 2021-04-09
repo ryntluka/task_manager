@@ -21,6 +21,7 @@ en:
       project:
         title: "Title"
         user: "User"
+        position: "Position"
       task:
         title: "Title"
         description: "Description"
@@ -55,3 +56,4 @@ en:
   detail: "Detail"
   delete: "Delete"
   edit_project: "Edit project"
+  position: "Position"

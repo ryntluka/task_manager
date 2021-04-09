@@ -20,6 +20,7 @@ en:
         remember_me: 'Remember me'
         tags: 'Tags'
         is_done: 'Is done'
+        position: 'Pozice'
 
       user:
         new:

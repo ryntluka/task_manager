@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
       logger.debug("HERE")
       projects_list = projects_list.search_by_title(@title)
     end
-    @pagy, @projects = pagy(projects_list.includes([:tasks]).order(:id), items: 12)
+    @pagy, @projects = pagy(projects_list.includes([:tasks]).order(:position), items: 12)
   end
 
   def show
@@ -23,7 +23,6 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.position = 1
     @project.user = current_user
     if @project.save
       redirect_to projects_url, flash: {success: t(:project_saved_successfully)}
@@ -52,13 +51,14 @@ class ProjectsController < ApplicationController
     if @project.update(project_params)
       redirect_to project_path(@project), flash: {success: t('the_project_was_saved_successfully')}
     else
-      logger.debug("Error occured during updating project")
+      flash.now[:danger] = t(:please_review_the_problems_below)
+      render :edit
     end
   end
 
   private
 
   def project_params
-    params.require(:project).permit(:title)
+    params.require(:project).permit(:title, :position)
   end
 end

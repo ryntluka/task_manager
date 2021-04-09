@@ -10,12 +10,16 @@ class TasksController < ApplicationController
   def index
     tasks_list = current_user.tasks.order(:id)
     @done = params["done"]
+    if @done.present?
+      if @done == 'true'
+        tasks_list = tasks_list.finished
+      elsif @done == 'false'
+        tasks_list = tasks_list.active
+      end
+    end
     if params["search"].present?
       @title = params["search"]["title"]
       tasks_list = tasks_list.search_by_title(@title)
-    end
-    if @done.present?
-      tasks_list = tasks_list.filter_by_done(@done)
     end
     @tasks = tasks_list
     @pagy, @tasks = pagy(tasks_list.includes([:project, :issues, :tags]), items: 12)
@@ -27,6 +31,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_create_params)
+    logger.debug(@task)
     @task.user = current_user
     @task.is_done = false
     if @task.save
