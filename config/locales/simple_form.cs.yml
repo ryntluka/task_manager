@@ -19,6 +19,7 @@ cs:
         current_password: 'Současné heslo'
         remember_me: 'Zapamatuj si mě'
         tags: 'Tagy'
+        is_done: 'Je dokončený'
 
       user:
         new:

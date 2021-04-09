@@ -17,11 +17,11 @@
       = render 'shared/common_details', entity: @task
       hr
       .d-flex.flex-row
-        p = "#{t(:project)}:"
+        p= "#{t(:project)}:"
         - if @task.project
-          = link_to @task.project.title, project_path(@task.project), class: "text-secondary"
+          = link_to @task.project.title, project_path(@task.project), class: "text-secondary px-2"
         - else
-          p.text-secondary = t(:unassigned)
+          p.px-2.text-secondary = t(:unassigned)
       hr
       .d-flex.flex-row
         = "#{t(:attachment)}:"

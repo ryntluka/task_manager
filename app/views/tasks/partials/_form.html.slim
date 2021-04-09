@@ -4,8 +4,11 @@
   .mb-2
     = f.input :description, required: false
   .mb-2
-    = f.association :project, label_method: lambda { |project| project.title }
+    = f.association :project, label_method: lambda { |project| project.title }, collection: current_user.projects
   .mb-2
-    = f.association :tags, as: :check_boxes, item_wrapper_tag: :div
+    = f.association :tags, as: :check_boxes, wrapper: :vertical_collection_inline, collection: current_user.tags
+  - if url != tasks_path
+    .mb-2
+      = f.input :is_done, required: false, as: :radio_buttons, wrapper: :vertical_collection_inline
   .form-actions
     = f.button :submit, t(:save)
