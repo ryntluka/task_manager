@@ -27,7 +27,6 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_create_params)
-    logger.debug(@task)
     @task.user = current_user
     @task.is_done = false
     if @task.save
@@ -40,8 +39,11 @@ class TasksController < ApplicationController
 
   def destroy
     @task = current_user.tasks.find_by(id: params[:id])
-    @task.destroy
-    redirect_to tasks_url, flash: {warning: t(:the_task_has_been_removed)}
+    if @task.destroy
+      redirect_to tasks_url, flash: {warning: t(:the_task_has_been_removed)}
+    else
+      logger.debug("Error occured during destroying task")
+    end
   end
 
   def edit
@@ -51,20 +53,27 @@ class TasksController < ApplicationController
   def update
     @task = current_user.tasks.find(params[:id])
     @task.user = current_user
-    @task.update(task_update_params)
-    redirect_to task_path(@task), flash: {success: t(:the_task_was_saved_successfully)}
+    if @task.update(task_update_params)
+      redirect_to task_path(@task), flash: {success: t(:the_task_was_saved_successfully)}
+    else
+      logger.debug("Error occured during updating task")
+    end
   end
 
   def do
     @task = current_user.tasks.find_by(id: params[:id])
     @task.is_done = true
-    @task.save
+    unless @task.save
+      logger.debug("Error occured during saving task")
+    end
   end
 
   def undo
     @task = current_user.tasks.find_by(id: params[:id])
     @task.is_done = false
-    @task.save
+    unless @task.save
+      logger.debug("Error occured during saving task")
+    end
   end
 
   private

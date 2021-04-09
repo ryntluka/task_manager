@@ -1,14 +1,14 @@
 .d-flex.flex-row
   p = "#{t(:created_at)}:"
-  p.px-2.text-secondary = entity.created_at.strftime("%d.%m.%Y")
+  p.secondary-text = entity.created_at.strftime("%d.%m.%Y")
 hr
 .d-flex.flex-row
   p = "#{t(:time_of_creation)}:"
-  p.px-2.text-secondary = entity.created_at.strftime("%k:%M")
+  p.secondary-text = entity.created_at.strftime("%k:%M")
 hr
 .d-flex.flex-row
   p = "#{t(:updated_at)}:"
-  p.px-2.text-secondary = entity.updated_at.strftime("%d.%m.%Y")
+  p.secondary-text = entity.updated_at.strftime("%d.%m.%Y")
 hr
 .d-flex.flex-row
   p = "#{t(:time_of_last_update)}:"
@@ -16,4 +16,4 @@ hr
 hr
 .d-flex.flex-row
   p = "#{t(:assigned_to)}:"
-  p.px-2.text-secondary = "#{entity.user.first_name} #{entity.user.last_name}"
+  p.secondary-text = "#{entity.user.first_name} #{entity.user.last_name}"

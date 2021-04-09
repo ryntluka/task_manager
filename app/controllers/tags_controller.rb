@@ -6,12 +6,12 @@ class TagsController < ApplicationController
   end
 
   def index
-    @tags_list = current_user.tags
+    tags_list = current_user.tags
     if params["search"].present?
       @title = params["search"]["title"]
-      @tags_list = @tags_list.search_by_title(@title)
+      tags_list = tags_list.search_by_title(@title)
     end
-    @pagy, @tags = pagy(@tags_list.order(:id), items: 12)
+    @pagy, @tags = pagy(tags_list.order(:id), items: 12)
   end
 
   def show
@@ -33,6 +33,8 @@ class TagsController < ApplicationController
     @tags = current_user.tags.find_by(id: params[:id])
     if @tags.destroy
       redirect_to tags_url, flash: {warning: t(:tag_has_been_removed)}
+    else
+      logger.debug("Error occured during destroying tag")
     end
   end
 
@@ -43,8 +45,11 @@ class TagsController < ApplicationController
   def update
     @tag = current_user.tags.find(params[:id])
     @tag.user = current_user
-    @tag.update(tag_params)
-    redirect_to tag_path(@tag), flash: {success: t(:tag_saved_successfully)}
+    if @tag.update(tag_params)
+      redirect_to tag_path(@tag), flash: {success: t(:tag_saved_successfully)}
+    else
+      logger.debug("Error occured during updating tag")
+    end
   end
 
   private

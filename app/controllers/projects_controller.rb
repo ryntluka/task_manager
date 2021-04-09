@@ -37,6 +37,8 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.find_by(id: params[:id])
     if @project.destroy
       redirect_to projects_url, flash: {warning: t(:the_project_has_been_removed)}
+    else
+      logger.debug("Error occured during destroying project")
     end
   end
 
@@ -47,8 +49,11 @@ class ProjectsController < ApplicationController
   def update
     @project = current_user.projects.find(params[:id])
     @project.user = current_user
-    @project.update(project_params)
-    redirect_to project_path(@project), flash: {success: t('the_project_was_saved_successfully')}
+    if @project.update(project_params)
+      redirect_to project_path(@project), flash: {success: t('the_project_was_saved_successfully')}
+    else
+      logger.debug("Error occured during updating project")
+    end
   end
 
   private
