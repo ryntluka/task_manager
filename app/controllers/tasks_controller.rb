@@ -18,7 +18,7 @@ class TasksController < ApplicationController
       @tasks_list = @tasks_list.filter_by_done(@done)
     end
     @tasks = @tasks_list
-    # @pagy, @tasks = pagy(@tasks_list, items: 12)
+    @pagy, @tasks = pagy(@tasks_list, items: 12)
   end
 
   def show
@@ -32,6 +32,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to tasks_url, flash: {success: t('the_task_was_saved_successfully')}
     else
+      flash.now[:danger] = t(:please_review_the_problems_below)
       render :new
     end
   end
@@ -57,16 +58,12 @@ class TasksController < ApplicationController
     @task = current_user.tasks.find_by(id: params[:id])
     @task.is_done = true
     @task.save
-    logger.debug("UNDO")
-    logger.debug(@task)
   end
 
   def undo
     @task = current_user.tasks.find_by(id: params[:id])
     @task.is_done = false
     @task.save
-    logger.debug("UNDO")
-    logger.debug(@task)
   end
 
   private
@@ -74,9 +71,4 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title, :description, :project_id)
   end
-
-  def index_params
-    params.permit :done
-  end
-
 end

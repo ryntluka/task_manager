@@ -49,3 +49,4 @@ cs:
   time_of_last_update: "Čas poslední úpravy"
   time_of_creation: "Čas vytvoření"
   project_saved_successfully: "Projekt byl úspěšně uložen"
+  the_project_has_been_removed: "Projekt byl smazán"

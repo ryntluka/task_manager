@@ -1,6 +1,6 @@
 .card.m-0.p-0 class=(task.is_done ? 'border-success' : 'border-warning')
   .card-header class=(task.is_done ? 'bg-success' : 'bg-warning')
-    = link_to edit_task_path(task), class: "btn btn-#{task.is_done ? "success" : "warning"} mx-0" do
+    = link_to edit_task_path(task), class: "btn btn-#{task.is_done ? "success" : "warning"} mx-0 text-light" do
       i.bi.bi-pen
     h3.card-title.text-center.py-1.m-0
       = link_to task.title, task_path(task), class: "text-dark"

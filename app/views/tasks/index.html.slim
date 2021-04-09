@@ -8,12 +8,6 @@ h1= t(:tasks)
     = f.input :title, input_html: {value: ""}
   .mb-2
     = f.submit t('search'), class: "btn btn-primary"
-
 = render 'tasks/partials/switch_status'
 #tasks-container
   = render 'tasks/partials/index_list'
-/ == pagy_bootstrap_nav(@pagy)
-= link_to new_task_path, class: 'btn' do
-  = t(:create_new)
-  '
-  i.bi.bi-plus

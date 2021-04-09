@@ -17,8 +17,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.position = 1
     @project.user = current_user
-    if @project.valid?
-      @project.save
+    if @project.save
       redirect_to projects_url, flash: {success: t(:project_saved_successfully)}
     else
       flash.now[:danger] = t(:please_review_the_problems_below)
@@ -29,7 +28,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = current_user.projects.find_by(id: params[:id])
     if @project.destroy
-      redirect_to projects_url
+      redirect_to projects_url, flash: {warning: t(:the_project_has_been_removed)}
     end
   end
 

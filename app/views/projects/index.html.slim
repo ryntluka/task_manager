@@ -1,22 +1,8 @@
 h1= t(:projects)
 .row
   - @projects.sort_by(&:position).each do |project|
-    .card.task-card.m-2.p-0
-      .card-header
-        = link_to edit_project_path(project), class: "btn btn-ligth text-dark mx-0" do
-          i.bi.bi-pen
-        h3.card-title.text-center.py-1.m-0
-          = link_to project.title, project_path(project), class: "text-dark"
-      .card-body
-        .card-header = t(:tasks)
-        ul.list-group.list-group-flush
-          - project.tasks[0..4].each do |task|
-            = link_to task.title,
-                    task_path(task),
-                    class: "text-dark m-0 list-group-item list-group-item-action #{task.is_done ? "bg-success" : "bg-warning"}"
-          - if project.tasks.count > 4
-            li.list-group-item.bg-light.text-center
-              '...
+    .task-card
+      = render 'projects/partials/index_detail', project: project
 == pagy_bootstrap_nav(@pagy)
 = link_to new_project_path, class: 'btn' do
   = t(:create_new)
