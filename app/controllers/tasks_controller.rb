@@ -31,7 +31,7 @@ class TasksController < ApplicationController
     @task.user = current_user
     @task.is_done = false
     if @task.save
-      redirect_to tasks_url, flash: {success: t('the_task_was_saved_successfully')}
+      redirect_to tasks_url, flash: {success: t(:the_task_was_saved_successfully)}
     else
       flash.now[:danger] = t(:please_review_the_problems_below)
       render :new
@@ -52,7 +52,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.find(params[:id])
     @task.user = current_user
     @task.update(task_update_params)
-    redirect_to task_path(@task), flash: {success: t('the_task_was_saved_successfully')}
+    redirect_to task_path(@task), flash: {success: t(:the_task_was_saved_successfully)}
   end
 
   def do
