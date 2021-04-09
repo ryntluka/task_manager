@@ -54,7 +54,7 @@ cs:
   tagy: "Tagy"
   tags: "Tagy"
   tag_saved_successfully: "Tag byl úspěšně uložen"
-  tag_has_been_removed: "Tga byl odstraněn"
+  tag_has_been_removed: "Tag byl odstraněn"
   detail: "Detail"
   delete: "Smazat"
   edit_project: "Upravit projekt"

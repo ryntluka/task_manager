@@ -20,7 +20,8 @@ table.table.table-hover
           = link_to edit_tag_path(tag), class: "btn btn-success text-dark" do
             i.bi.bi-pen
         td
-          = link_to tag_path(tag), method: :delete, class: "btn btn-danger text-dark" do
+          = link_to tag_path(tag), method: :delete, class: "btn btn-danger text-dark",
+                  data: {confirm: t(:are_you_sure_you_want_to_delete_this_item)} do
             i.bi.bi-trash
     tr
       td colspan="5"

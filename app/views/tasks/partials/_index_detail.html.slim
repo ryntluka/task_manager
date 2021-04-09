@@ -16,5 +16,5 @@
         = button_to undo_task_path(task), class: 'btn btn-outline-success', method: :delete, remote: true do
           i.bi.bi-arrow-counterclockwise
       = button_to task_path(task), method: :delete, class: 'btn btn-danger',
-              data: {confirm: t('are_you_sure_you_want_to_delete_this_item')} do
+              data: {confirm: t(:are_you_sure_you_want_to_delete_this_item)} do
         i.bi.bi-trash
