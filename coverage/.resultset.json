@@ -1224,7 +1224,7 @@
           1,
           1,
           5,
-          5,
+          10,
           1,
           null,
           null
@@ -1256,10 +1256,10 @@
         "lines": [
           1,
           1,
-          37,
-          37,
-          37,
-          37,
+          47,
+          47,
+          47,
+          47,
           null,
           1,
           1,
@@ -1360,7 +1360,6 @@
           null,
           null,
           1,
-          1,
           null
         ]
       },
@@ -1378,7 +1377,6 @@
           null,
           null,
           null,
-          1,
           1,
           null
         ]
@@ -1398,6 +1396,29 @@
           2,
           2,
           null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
           null
         ]
       },
@@ -1410,7 +1431,7 @@
           1,
           1,
           null,
-          1,
+          6,
           null
         ]
       },
@@ -1429,6 +1450,29 @@
           2,
           2,
           null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
           null
         ]
       },
@@ -1442,7 +1486,7 @@
           1,
           1,
           null,
-          1,
+          6,
           null
         ]
       },
@@ -1557,10 +1601,31 @@
       "/home/lukas/task_manager/spec/requests/projects_spec.rb": {
         "lines": [
           1,
+          1,
           null,
           1,
           1,
           1,
+          null,
+          null,
+          1,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/lukas/task_manager/spec/helpers/auth_helper.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          0,
+          0,
+          0,
           null,
           null
         ]
@@ -1572,6 +1637,9 @@
           1,
           1,
           1,
+          1,
+          1,
+          null,
           null,
           null
         ]
@@ -1580,7 +1648,6 @@
         "lines": [
           1,
           null,
-          1,
           1,
           1,
           null,
@@ -1618,8 +1685,86 @@
           1,
           null
         ]
+      },
+      "/home/lukas/task_manager/app/controllers/tags_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/home/lukas/task_manager/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1618053537
+    "timestamp": 1618054940
   }
 }
