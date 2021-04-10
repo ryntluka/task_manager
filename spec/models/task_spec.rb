@@ -27,11 +27,11 @@ RSpec.describe Tag, type: :model do
   describe '.finished' do
     it 'should include finished tasks' do
       task = create(:task, is_done: true)
-      expect(Task.active).to include task
+      expect(Task.finished).to include task
     end
     it 'should exclude active tasks' do
       task = create(:task, is_done: false)
-      expect(Task.active).not_to include task
+      expect(Task.finished).not_to include task
     end
   end
 
@@ -54,7 +54,27 @@ RSpec.describe Tag, type: :model do
     end
     it 'should exclude title which doesn\'t contain expression' do
       task = create(:task, title: "Hello there")
-      expect(Task.search_by_title("SO")).to include task
+      expect(Task.search_by_title("SO")).not_to include task
+    end
+  end
+
+  describe '.filter_by_tags' do
+    it 'should include task with tag' do
+      tag = create(:tag)
+      task = create(:task, tags: [tag])
+      expect(Task.filter_by_tags([tag.id,])).to include task
+    end
+    it 'should exclude task without tag' do
+      tag = create(:tag)
+      task = create(:task)
+      expect(Task.filter_by_tags([tag.id,])).not_to include task
+    end
+    it 'should include task with multiple tags' do
+      tag1 = create(:tag)
+      tag2 = create(:tag)
+      task = create(:task, tags: [tag1, tag2])
+      expect(Task.filter_by_tags([tag1.id,])).to include task
+      expect(Task.filter_by_tags([tag2.id,])).to include task
     end
   end
 end
