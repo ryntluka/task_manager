@@ -4,7 +4,7 @@
     tag = FactoryBot.create(:tag, user: user)
     project = FactoryBot.create(:project, user: user)
     10.times do
-      FactoryBot.create(:task, user: user, project: project, tag: tag)
+      FactoryBot.create(:task, user: user, project: project, tags: [tag])
     end
   end
 end

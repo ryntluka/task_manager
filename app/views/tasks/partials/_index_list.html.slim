@@ -1,9 +1,0 @@
-.row
-  - @tasks.each do |task|
-    .task-card id="task-#{task.id}"
-      = render 'tasks/partials/index_detail', task: task
-== pagy_bootstrap_nav(@pagy)
-= button_to new_task_path, class: 'btn btn-primary' do
-  = t(:create_new)
-  '
-  i.bi.bi-plus

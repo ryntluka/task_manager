@@ -7,27 +7,21 @@ class TasksController < ApplicationController
     @task.issues.build
   end
 
+  def search_filter(search, tasks_list)
+    @title = search["title"]
+    @tags = search["tags"]
+    @done = search["is_done"]
+    if @done.present?
+      tasks_list = tasks_list.finished if @done == 'true'
+      tasks_list = tasks_list.active if @done == 'false'
+    end
+    tasks_list = tasks_list.filter_by_tags(@tags) if @tags.length > 1
+    tasks_list.search_by_title(@title)
+  end
+
   def index
     tasks_list = current_user.tasks.order(:id)
-    @done = params["done"]
-    if @done.present?
-      if @done == 'true'
-        tasks_list = tasks_list.finished
-      elsif @done == 'false'
-        tasks_list = tasks_list.active
-      end
-    end
-    if params["search"].present?
-      @title = params["search"]["title"]
-      @tags = params["search"]["tags"]
-      if @tags.length > 1
-        tasks_list = tasks_list.filter_by_tags(@tags)
-        logger.debug(@tags)
-        logger.debug("RES")
-        logger.debug(tasks_list.count)
-      end
-      tasks_list = tasks_list.search_by_title(@title)
-    end
+    tasks_list = search_filter(params["search"], tasks_list) if params["search"].present?
     @tasks = tasks_list
     @pagy, @tasks = pagy(tasks_list.includes([:project, :issues, :tags]), items: 12)
   end

@@ -4,11 +4,21 @@ h1= t(:tasks)
         wrapper: :inline_form,
         html: { class: 'form-inline' },
         method: :get do |f|
+  .mb-2
+    = f.input :title, input_html: {value: ""}
+  .mb-2
+    = f.input :tags, as: :check_boxes, wrapper: :vertical_collection_inline, collection: current_user.tags
+  .mb-2
+    = f.input :is_done, as: :radio_buttons, wrapper: :vertical_collection_inline
+  .mb-2
+    = f.submit t(:search), class: "btn btn-primary"
 
-  = f.input :title, input_html: {value: ""}
-  = f.input :tags, as: :check_boxes, wrapper: :vertical_collection_inline, collection: current_user.tags
-  = f.submit t(:search), class: "btn btn-primary"
-
-= render 'tasks/partials/switch_status'
-#tasks-container
-  = render 'tasks/partials/index_list'
+.row
+  - @tasks.each do |task|
+    .task-card id="task-#{task.id}"
+      = render 'tasks/partials/index_detail', task: task
+== pagy_bootstrap_nav(@pagy)
+= button_to new_task_path, class: 'btn btn-primary', method: :get do
+  = t(:create_new)
+  '
+  i.bi.bi-plus
