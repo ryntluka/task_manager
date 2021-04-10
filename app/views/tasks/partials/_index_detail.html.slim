@@ -15,7 +15,7 @@
         p.secondary-text = t(:unassigned)
     hr
     - if task.tags.length != 0
-      .d-flex.flex-row
+      .d-flex.flex-row.flex-wrap
         p= "#{t(:tags)}:"
         - task.tags.each do |tag|
           = link_to tag.title, tag_path(tag), class: "secondary-text"

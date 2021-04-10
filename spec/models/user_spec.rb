@@ -17,4 +17,25 @@ describe User, type: :model do
     it { should have_many(:projects) }
     it { should have_many(:tags) }
   end
+
+  describe 'delete strategies' do
+    it 'should delete tasks' do
+      user = create(:user)
+      task = create(:task, user: user)
+      user.destroy
+      expect(Task.find_by(id: task.id)).to eq nil
+    end
+    it 'should delete projects' do
+      user = create(:user)
+      project = create(:project, user: user)
+      user.destroy
+      expect(Project.find_by(id: project.id)).to eq nil
+    end
+    it 'should delete tags' do
+      user = create(:user)
+      tag = create(:tag, user: user)
+      user.destroy
+      expect(Tag.find_by(id: tag.id)).to eq nil
+    end
+  end
 end

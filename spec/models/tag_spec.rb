@@ -34,4 +34,19 @@ RSpec.describe Tag, type: :model do
       expect(Tag.search_by_title("SO")).not_to include tag
     end
   end
+
+  describe 'delete strategies' do
+    it 'should not delete user' do
+      user = create(:user)
+      tag = create(:tag, user: user)
+      tag.destroy
+      expect(User.find_by(id: user.id)).not_to eq nil
+    end
+    it 'should not delete task' do
+      tag = create(:tag)
+      task = create(:task, tags: [tag])
+      tag.destroy
+      expect(Task.find_by(id: task.id)).not_to eq nil
+    end
+  end
 end
