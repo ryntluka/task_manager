@@ -1,16 +1,15 @@
 / = javascript_pack_tag 'switch_button'
 
 .btn-group.mb-2 role="group"
-  |<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-  |<label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
   = link_to t('all'),
            tasks_path,
+           class: "btn btn-outline-primary",
            method: :get
-  |<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-  |<label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
   = link_to t('active'),
           tasks_path(request.query_parameters.merge({ done: false })),
+          class: "btn btn-outline-primary",
           method: :get
-  |<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-  = link_totasks_path(request.query_parameters.merge({ done: true })), method: :get do
-    |<label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+  = link_to t('finished'),
+          tasks_path(request.query_parameters.merge({ done: true })),
+          class: "btn btn-outline-primary",
+          method: :get

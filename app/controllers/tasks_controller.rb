@@ -19,6 +19,13 @@ class TasksController < ApplicationController
     end
     if params["search"].present?
       @title = params["search"]["title"]
+      @tags = params["search"]["tags"]
+      if @tags.length > 1
+        tasks_list = tasks_list.filter_by_tags(@tags)
+        logger.debug(@tags)
+        logger.debug("RES")
+        logger.debug(tasks_list.count)
+      end
       tasks_list = tasks_list.search_by_title(@title)
     end
     @tasks = tasks_list

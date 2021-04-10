@@ -11,5 +11,10 @@ class Task < ApplicationRecord
 
   scope :active, -> { where is_done: false }
   scope :finished, ->{ where is_done: true }
-  scope :search_by_title, ->(title) { where("title ILIKE ?", "%#{title}%") }
+  scope :filter_by_tags, ->(tag_ids) do
+    tags = []
+    tag_ids.each { |tag_id| tags.push(Tag.find_by(id: tag_id)) }
+    joins(:tags).references(:tags).where(tags: tags)
+  end
+  scope :search_by_title, ->(expr) { where("tasks.title ILIKE ?", "%#{expr}%") }
 end

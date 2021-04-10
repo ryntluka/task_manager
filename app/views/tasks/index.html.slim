@@ -1,5 +1,14 @@
 h1= t(:tasks)
-= render 'shared/search_form', url: tasks_path
+
+= simple_form_for :search, url: tasks_path,
+        wrapper: :inline_form,
+        html: { class: 'form-inline' },
+        method: :get do |f|
+
+  = f.input :title, input_html: {value: ""}
+  = f.input :tags, as: :check_boxes, wrapper: :vertical_collection_inline, collection: current_user.tags
+  = f.submit t(:search), class: "btn btn-primary"
+
 = render 'tasks/partials/switch_status'
 #tasks-container
   = render 'tasks/partials/index_list'
