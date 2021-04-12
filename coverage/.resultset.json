@@ -1223,8 +1223,8 @@
         "lines": [
           1,
           1,
-          7,
-          12,
+          1,
+          1,
           1,
           null,
           null
@@ -1245,9 +1245,9 @@
           1,
           1,
           1,
-          2,
-          2,
-          2,
+          3,
+          3,
+          3,
           null,
           null
         ]
@@ -1256,10 +1256,10 @@
         "lines": [
           1,
           1,
-          13,
-          13,
-          13,
-          13,
+          3,
+          3,
+          3,
+          3,
           null,
           1,
           1,
@@ -1345,19 +1345,6 @@
           null
         ]
       },
-      "/home/lukas/task_manager/app/models/project.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          6,
-          null
-        ]
-      },
       "/home/lukas/task_manager/app/models/task.rb": {
         "lines": [
           1,
@@ -1383,6 +1370,6 @@
         ]
       }
     },
-    "timestamp": 1618085718
+    "timestamp": 1618224683
   }
 }
